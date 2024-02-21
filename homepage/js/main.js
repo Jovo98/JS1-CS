@@ -7,15 +7,17 @@ async function enFunksjon(){
     const results = await response.json()
     console.log(results)
 }
-
+//Testing and registering to retrieve API Key
 async function lagBruker(){
-    const response = await fetch("https://api.noroff.dev/api/v1/auth/login", {
+    const response = await fetch("https://v2.api.noroff.dev/auth/register", {
         method: "post",
         headers: {
             "Content-type": "application/json; charset=UTF-8",
         },
         body: JSON.stringify({
-            "username": "jo_tan_vo",
+            "name": "jo_tan_vo",
+            "email": "jotanv00100@stud.noroff.no",
+            "password": "joerher123456",
         })
     })
     console.log(response)
@@ -38,8 +40,6 @@ async function logIn(){
     const results = await response.json()
     console.log(results)
 }
-
-
 
 async function reqKey(){
     const response = await fetch("https://v2.api.noroff.dev/auth/create-api-key", {
