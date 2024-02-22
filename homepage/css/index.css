@@ -9,6 +9,28 @@
     padding-left: 2rem;
     padding-right: 2rem;
 }
+ul {
+    list-style-type: none;
+}
+
+ul span {
+    width: 324px;
+}
+
+ul li {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
+}
+#titles {
+    display: flex;
+    flex-wrap: wrap;
+}
+img {
+    width: 300px;
+    height: 450px;
+}
 
 .header ul {
     display: none;
@@ -106,28 +128,12 @@ textarea {
     box-shadow: none;
     resize: none;
 }
-
-h1 {
-    color: var(--neutral);
-    text-align: center;
-    font-size: 1.5rem;
-    line-height: 2rem;
-}
-
-.top-movies {
+.movies {
     display: flex;
     justify-content: center;
-    align-content: center;
-}
 
-.top-img-avengers {
-    border-radius: 8px;
-}
 
-.top-img-wall-e {
-    display: none;
 }
-
 h2 {
     margin-top: 2rem;
     margin-left: 2rem;
@@ -450,6 +456,7 @@ a {
 
     .genre-section {
         margin-left: 3.25rem;
+        margin-bottom: 3rem;
     }
 
     .random-movies {
@@ -462,10 +469,13 @@ a {
     }
 
     h1 {
-        display: none;
+        display: flex;
+        font-size: 2rem;
+        margin-top: 2rem;
+        margin-left: 2rem;
+        color: var(--neutral);
     }
     header {
-        position: fixed;
         z-index: 1;
     }
 

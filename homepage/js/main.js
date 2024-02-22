@@ -1,7 +1,7 @@
+import {API_URL} from "../../modules/API.js";
 async function enFunksjon(){
     const response = await fetch("https://api.noroff.dev/api/v1/jokes", {
         method: "get",
-
     })
     console.log(response)
     const results = await response.json()
@@ -67,14 +67,28 @@ async function useKey(){
             "X-Noroff-API-Key": "786ece52-9ff2-41f5-afa9-8ffefd90801a",
         },
     })
-    console.log(response)
+
     const results = await response.json()
     console.log(results)
 }
-useKey()
 
 
+async function fetchMovies() {
+    const response = await fetch("https://api.noroff.dev/api/v1/square-eyes", );
+    const data = await response.json();
+}
 
 
+fetch(API_URL,)
+    .then(r =>{
+        return r.json();    })
+    .then(data => {
+        data.forEach(movie => {
+            const markup = `<span><img src="${movie.image}"><li>${movie.title}</li><li>${movie.price}kr,-</li></span>`;
 
+            document.querySelector('#titles').insertAdjacentHTML('beforeend', markup);
+        })
+
+
+    }).catch(error => console.log(error));
 
