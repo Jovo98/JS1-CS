@@ -1,21 +1,23 @@
+import {API_URL} from "../../modules/API.js";
 async function enFunksjon(){
     const response = await fetch("https://api.noroff.dev/api/v1/jokes", {
         method: "get",
-
     })
     console.log(response)
     const results = await response.json()
     console.log(results)
 }
-
+//Testing and registering to retrieve API Key
 async function lagBruker(){
-    const response = await fetch("https://api.noroff.dev/api/v1/auth/login", {
+    const response = await fetch("https://v2.api.noroff.dev/auth/register", {
         method: "post",
         headers: {
             "Content-type": "application/json; charset=UTF-8",
         },
         body: JSON.stringify({
-            "username": "jo_tan_vo",
+            "name": "jo_tan_vo",
+            "email": "jotanv00100@stud.noroff.no",
+            "password": "joerher123456",
         })
     })
     console.log(response)
@@ -38,8 +40,6 @@ async function logIn(){
     const results = await response.json()
     console.log(results)
 }
-
-
 
 async function reqKey(){
     const response = await fetch("https://v2.api.noroff.dev/auth/create-api-key", {
@@ -67,14 +67,28 @@ async function useKey(){
             "X-Noroff-API-Key": "786ece52-9ff2-41f5-afa9-8ffefd90801a",
         },
     })
-    console.log(response)
+
     const results = await response.json()
     console.log(results)
 }
-useKey()
 
 
+async function fetchMovies() {
+    const response = await fetch("https://api.noroff.dev/api/v1/square-eyes", );
+    const data = await response.json();
+}
 
 
+fetch(API_URL,)
+    .then(r =>{
+        return r.json();    })
+    .then(data => {
+        data.forEach(movie => {
+            const markup = `<span><img src="${movie.image}"><li>${movie.title}</li><li>${movie.price}kr,-</li></span>`;
 
+            document.querySelector('#titles').insertAdjacentHTML('beforeend', markup);
+        })
+
+
+    }).catch(error => console.log(error));
 
