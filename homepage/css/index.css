@@ -36,7 +36,17 @@ ul li {
 #titles {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
+#titles h2 {
+    margin-top: 1rem;
+    margin-left:1rem;
+}
+#titles p {
+    margin-left: 1rem;
+}
+
 img {
     width: 300px;
     height: 450px;
@@ -145,11 +155,10 @@ textarea {
 
 }
 h2 {
-    margin-top: 2rem;
-    margin-left: 2rem;
     color: var(--neutral);
     font-size: 1.5rem;
 }
+
 
 h3 {
     margin-top: 2rem;
@@ -195,7 +204,7 @@ h4 {
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    margin-left: 2rem;
+
 }
 
 .genre-buttons-desktop {
@@ -395,6 +404,7 @@ a {
 
     .genres-desktop {
         font-size: 2rem;
+        margin-top: 1.5rem;
     }
 
     .genre-buttons button {

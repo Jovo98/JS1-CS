@@ -74,36 +74,55 @@ async function useKey(){
     console.log(results)
 }
 
+const genreButtons = document.querySelectorAll(".genreBtn");
+const showAllButton = document.getElementById("showAllBtn");
 
-async function fetchMovies() {
+function sortGenre(event) {
+    const selectedGenre = event.target.dataset.genre;
+    if (selectedGenre) {
+        fetchMovies(selectedGenre);
+    }
+}
+
+function showAllMovies() {
+    fetchMovies()
+}
+
+genreButtons.forEach(button => {
+    button.addEventListener("click", sortGenre);
+});
+
+showAllButton.addEventListener("click", showAllMovies);
+
+fetchMovies();
+
+async function fetchMovies(genre) {
     const content = document.getElementById("titles");
     content.innerHTML = "<p>Loading...  </p>";
-    const response = await fetch(API_URL);
-    const data = await response.json();
-    content.innerHTML = "";
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        content.innerHTML = "";
 
-    data.forEach((movies) => {
-        if (movies.onSale === true) {
-            content.innerHTML += `
-            <a href="../productpage/product.html?id=${movies.id}">
-            <h2>${movies.title}</h2>                
-            <img src=${movies.image}\>
-            <p class="price"><s>${movies.price}kr ,-</s></p>
-            <p class="discountedPrice">${movies.discountedPrice}kr ,-</p>
-            </a>`;
-        }
-        if (movies.onSale === false) {
-            content.innerHTML +=
-            `
-            <a href="../productpage/product.html?id=${movies.id}">                  
-            <h2>${movies.title}</h2>                                
-            <img src=${movies.image}\>                              
-            <p class="price">${movies.price}kr ,-</p>                    
-            </a>`;
-        }
-    });
+        data.forEach((movies) => {
+            if (!genre || (movies.onSale && movies.genre === genre) || (!movies.onSale && movies.genre === genre)) {
+                content.innerHTML += `
+                <a href="../productpage/product.html?id=${movies.id}">
+                <img src=${movies.image} />
+                <h2>${movies.title}</h2>   
+                <p class="price">${movies.onSale ? `<s>${movies.price}kr ,-</s>` : `${movies.price}kr ,-`}</p>
+                ${movies.onSale ? `<p class="discountedPrice">${movies.discountedPrice}kr ,-</p>` : ''}
+                </a>`;
+            }
+        });
+    } catch (error) {
+        console.error("Error fetching movies:", error);
+        content.innerHTML = "<p>Error loading movies</p>";
+    }
 }
-fetchMovies();
+
+
+
 
 // fetch(API_URL,)
 //     .then(r =>{
