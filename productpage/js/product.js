@@ -16,7 +16,7 @@ async function fetchMovieId() {
         if (!response.ok) {
             throw new Error('Failed to fetch data');
         }
-        const dataResult = await response.json();
+        dataResult = await response.json();
         let found = false;
         for (let i = 0; i < dataResult.length; i++) {
             if (dataResult[i].id === movieId) {
@@ -49,6 +49,7 @@ function displayMovie(dataResult) {
                 <p>Rating: ${dataResult.rating}/10</p>
                 <p>${dataResult.price} kr ,-</p>
                 <p>${dataResult.tags}</p>
+                
             </div>`;
     } else if (dataResult && dataResult.onSale === true) {
         movieContainer.innerHTML = `
@@ -62,7 +63,7 @@ function displayMovie(dataResult) {
                 <p>Rating: ${dataResult.rating}/10</p>
                 <p class="price"><s>${dataResult.price} kr ,-</s></p>
                 <p class="discountedPrice">${dataResult.discountedPrice} kr ,-</p>
-                <p>${dataResult.tags}</p>
+                <p>Tags: ${dataResult.tags}</p>
             </div>`;
     } else {
         movieContainer.innerHTML = "Invalid movie data";
@@ -84,6 +85,8 @@ function saveToLocalStorage(selectedMovie) {
     cartItems.push(selectedMovie);
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
+
+
 
 
 
