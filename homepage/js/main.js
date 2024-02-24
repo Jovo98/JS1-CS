@@ -58,6 +58,8 @@ async function reqKey(){
     console.log(results)
 }
 
+
+// Attempt on using API v2
 async function useKey(){
     const response = await fetch("https://v2.api.noroff.dev/square-eyes", {
         method: "get",
@@ -74,21 +76,45 @@ async function useKey(){
 
 
 async function fetchMovies() {
-    const response = await fetch("https://api.noroff.dev/api/v1/square-eyes", );
+    const content = document.getElementById("titles");
+    content.innerHTML = "<p>Loading...  </p>";
+    const response = await fetch(API_URL);
     const data = await response.json();
+    content.innerHTML = "";
+
+    data.forEach((movies) => {
+        if (movies.onSale === true) {
+            content.innerHTML += `
+            <a href="../productpage/product.html?id=${movies.id}">
+            <h2>${movies.title}</h2>                
+            <img src=${movies.image}\>
+            <p class="price"><s>${movies.price}kr ,-</s></p>
+            <p class="discountedPrice">${movies.discountedPrice}kr ,-</p>
+            </a>`;
+        }
+        if (movies.onSale === false) {
+            content.innerHTML +=
+            `
+            <a href="../productpage/product.html?id=${movies.id}">                  
+            <h2>${movies.title}</h2>                                
+            <img src=${movies.image}\>                              
+            <p class="price">${movies.price}kr ,-</p>                    
+            </a>`;
+        }
+    });
 }
+fetchMovies();
 
-
-fetch(API_URL,)
-    .then(r =>{
-        return r.json();    })
-    .then(data => {
-        data.forEach(movie => {
-            const markup = `<span><img src="${movie.image}"><li>${movie.title}</li><li>${movie.price}kr,-</li></span>`;
-
-            document.querySelector('#titles').insertAdjacentHTML('beforeend', markup);
-        })
-
-
-    }).catch(error => console.log(error));
+// fetch(API_URL,)
+//     .then(r =>{
+//         return r.json();    })
+//     .then(data => {
+//         data.forEach(movie => {
+//             const markup = `<span><img src="${movie.image}"><li>${movie.title}</li><li>${movie.price}kr,-</li></span>`;
+//
+//             document.querySelector('#titles').insertAdjacentHTML('beforeend', markup);
+//         })
+//
+//
+//     }).catch(error => console.log(error));
 
