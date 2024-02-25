@@ -1,4 +1,7 @@
 import {API_URL} from "../../modules/API.js";
+
+const genreButtons = document.querySelectorAll(".genreBtn");
+const showAllButton = document.getElementById("showAllBtn");
 async function enFunksjon(){
     const response = await fetch("https://api.noroff.dev/api/v1/jokes", {
         method: "get",
@@ -57,8 +60,6 @@ async function reqKey(){
     const results = await response.json()
     console.log(results)
 }
-
-
 // Attempt on using API v2
 async function useKey(){
     const response = await fetch("https://v2.api.noroff.dev/square-eyes", {
@@ -73,9 +74,6 @@ async function useKey(){
     const results = await response.json()
     console.log(results)
 }
-
-const genreButtons = document.querySelectorAll(".genreBtn");
-const showAllButton = document.getElementById("showAllBtn");
 
 function sortGenre(event) {
     const selectedGenre = event.target.dataset.genre;

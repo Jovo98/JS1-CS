@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script src="../checkoutpage/js/checkout.js" type="module"></script>
     <script src="https://kit.fontawesome.com/3f7a7f830e.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>Checkout | SquareEyes</title>
@@ -20,10 +21,10 @@
 
 <header>
     <div class="icon-back">
-        <a href="product.html"><i class="fa-solid fa-chevron-left"></i></a>
+        <a href="../productpage/product.html"><i class="fa-solid fa-chevron-left"></i></a>
     </div>
     <div class="logo-section">
-        <img class="logo" src="../../JS1-CS/assets/images/SquareEyes-Logo-better-4.png" alt="this is my logo">
+        <a href="../homepage/index.html"><img class="logo" src="../../JS1-CS/assets/images/SquareEyes-Logo-better-4.png" alt="this is my logo"></a>
     </div>
     <div class="icon-cart">
         <i class="fa-solid fa-cart-shopping"></i>
@@ -57,30 +58,17 @@
                 <span>Satisfaction Guaranteed</span>
             </div>
         </div>
+        <div class="cartStyle">
+            <div id="cartContainer">
 
-        <div class="summary">
-            <div>
-                <img class="summary-img-2" src="../../JS1-CS/assets/images/top-movie-avengers-desktop.jpg" alt="avengers" width="231"
-                     height="130">
-                <img class="summary-img-1" src="../../JS1-CS/assets/images/top-movie-avengers-mobile-2.jpg" alt="avengers"
-                     width="165" height="93">
-                <span>1x</span>
-                <span><i class="fa-solid fa-xmark" id="close"></i></span>
-                <p>Avengers Endgame</p>
             </div>
-            <div class="underline">
-                <span class="text-grey">Order:</span>
-                <span> $ 9.99</span>
-            </div>
-            <div class="underline">
-                <span class="text-grey">Tax:</span>
-                <span>$ 2.50</span>
-            </div>
-            <div>
-                <span>Total</span>
-                <span> $ 12.49</span>
+            <div id="totalPrice">Total:
+
             </div>
         </div>
+
+
+
 
         <div class="discount">
             <form>
@@ -172,7 +160,7 @@
 
         <div class="submit-button">
             <a href="../confirmationpage/succsess.html">
-                <button type="button">
+                <button type="button" id="submitOrderButton">
                     Submit Order
                 </button>
             </a>
