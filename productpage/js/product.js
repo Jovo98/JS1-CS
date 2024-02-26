@@ -74,6 +74,7 @@ addToCart.addEventListener("click", () => {
     const selectedMovie = dataResult.find(movie => movie.id === movieId);
     if (selectedMovie) {
         saveToLocalStorage(selectedMovie);
+        alert ("Successfully added movie to cart.")
     }
 });
 
