@@ -1,5 +1,4 @@
 import {API_URL} from "../../modules/API.js";
-
 const queryString = window.location.search;
 const paramUrl = new URLSearchParams(queryString);
 const movieId = paramUrl.get("id");
@@ -9,9 +8,8 @@ const addToCart = document.getElementById("cart")
 const cartButton = document.getElementById("cartbutton")
 const checkoutButton = document.getElementById("checkout")
 
-
 let dataResult = [];
-let cartItems = [];
+let cartItem = [];
 async function fetchMovieId() {
     try {
         const response = await fetch(API_URL);
@@ -95,10 +93,3 @@ checkoutButton.addEventListener("click", () => {
         window.location.href = "../checkoutpage/checkout.html";
     }
 });
-
-
-
-
-
-
-

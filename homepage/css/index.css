@@ -206,6 +206,11 @@ h4 {
     gap: 1rem;
 
 }
+.genre-buttons button {
+    font-weight: bold;
+    color: var(--primary);
+
+}
 
 .genre-buttons-desktop {
     display:none;
@@ -492,7 +497,6 @@ a {
         display: flex;
         font-size: 2rem;
         margin-top: 2rem;
-        margin-left: 2rem;
         color: var(--neutral);
     }
     header {
