@@ -5,11 +5,13 @@ const paramUrl = new URLSearchParams(queryString);
 const movieId = paramUrl.get("id");
 const movieContainer = document.getElementById("movieContainer");
 const content = document.getElementById("content");
-const addMeToCart = document.getElementById("cart")
+const addToCart = document.getElementById("cart")
 const cartButton = document.getElementById("cartbutton")
+const checkoutButton = document.getElementById("checkout")
 
 
 let dataResult = [];
+let cartItems = [];
 async function fetchMovieId() {
     try {
         const response = await fetch(API_URL);
@@ -70,7 +72,7 @@ function displayMovie(dataResult) {
     }
 }
 
-addMeToCart.addEventListener("click", () => {
+addToCart.addEventListener("click", () => {
     const selectedMovie = dataResult.find(movie => movie.id === movieId);
     if (selectedMovie) {
         saveToLocalStorage(selectedMovie);
@@ -78,13 +80,21 @@ addMeToCart.addEventListener("click", () => {
 });
 
 function saveToLocalStorage(selectedMovie) {
-    if (localStorage.getItem("cartItems") === null) {
-        localStorage.setItem("cartItems", "[]");
+    if (localStorage.getItem("cartItem") === null) {
+        localStorage.setItem("cartItem", "[]");
     }
-    let cartItems = JSON.parse(localStorage.getItem("cartItems"));
-    cartItems.push(selectedMovie);
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    let cartItem = JSON.parse(localStorage.getItem("cartItem"));
+    cartItem.push(selectedMovie);
+    localStorage.setItem("cartItem", JSON.stringify(cartItem));
 }
+
+checkoutButton.addEventListener("click", () => {
+    if (localStorage.length === 0) {
+        alert("No movies selected. Select a movie please:).");
+    } else {
+        window.location.href = "../checkoutpage/checkout.html";
+    }
+});
 
 
 

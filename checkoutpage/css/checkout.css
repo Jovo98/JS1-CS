@@ -9,6 +9,50 @@ header i {
     color: #ACBAEA;
 }
 
+#checkoutImage {
+
+    width: 150px;
+    height: 200px;
+
+}
+
+#totalPrice {
+    margin: 2rem 4rem 2rem 7rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+
+}
+
+#cartContainer {
+    margin: 2rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#cartContainer span {
+    display: flex;
+    flex-direction: row;
+}
+
+#cartDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
+.checkoutInfo {
+    margin-left: 2rem;
+    border-bottom: 2px solid black;
+}
+
+.cartStyle {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+.removeItem {
+    color:black;
+}
+
 .logo-section {
     width: 120px;
     height: 56px;
